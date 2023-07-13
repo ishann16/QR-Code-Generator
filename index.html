@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>QR Code generater</title>
+</head>
+<body>
+    <div class="container">
+       <p>Enter URL or text</p>
+       <input type="text" placeholder="Enter your URL or text here" id="inputText">
+       <div id="image">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh9ZTd-lQpmvMh-v5wP6cN4uhcS7vp50tlWl9yOC5t02dF50JpAdXQOz3xy2Ub0YrnQa0&usqp=CAU" id="QR_image">
+       </div>
+       <button onclick="generateQR()">Genrate QR Code</button>
+    </div>
+    <script>
+        let inputText = document.getElementById("inputText");
+        let image = document.getElementById("image");
+        let QR_image= document.getElementById("QR_image");
+
+        function generateQR()
+        {
+            if(inputText.value.length > 0)
+            {
+                QR_image.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + inputText.value;
+            }
+            if(inputText.value.length == 0)
+            {
+                QR_image.src = "https://cdn1.vectorstock.com/i/1000x1000/33/10/404-error-page-not-found-emoji-sad-smile-vector-28503310.jpg";
+            }
+        }   
+    </script>
+</body>
+</html>
